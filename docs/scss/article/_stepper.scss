@@ -1,0 +1,54 @@
+// https://verpex.com/blog/website-tips/a-css-only-responsive-stepper-component
+
+@use '../abstracts/mixins' as mixin;
+
+.markdown-section .stepper {
+    $circle-size: calc(var(--size-4) * var(--font-lineheight-5));
+    $line-thickness: var(--size-1);
+
+    > ul {
+        padding: 0;
+        counter-reset: step;
+        @include mixin.flex(column, flex-start, flex-start);
+        gap: var(--size-5);
+        background: linear-gradient(var(--surface-4) 0 0) no-repeat calc(($circle-size - $line-thickness) / 2) 50% /
+            $line-thickness calc(100% - var(--border-size-3));
+    }
+
+    > ul > li {
+        list-style: none;
+        display: grid;
+        grid-template-columns: $circle-size auto;
+        gap: var(--size-1);
+        inline-size: stretch;
+
+        > * {
+            grid-column: 2;
+        }
+
+        ul {
+            padding-inline-start: var(--size-6);
+        }
+    }
+
+    > ul > li::before {
+        counter-increment: step;
+        content: counter(step);
+        font-family: var(--font-monospace-code);
+        @include mixin.flex(row, center, center);
+        block-size: $circle-size;
+        aspect-ratio: 1;
+        background: var(--pink-6);
+        color: var(--gray-0);
+        border: {
+            width: var(--border-size-3);
+            style: solid;
+            color: var(--surface-1);
+            radius: var(--radius-round);
+        }
+    }
+
+    li p:last-child {
+        margin-block-end: 0;
+    }
+}

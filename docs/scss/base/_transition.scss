@@ -1,0 +1,77 @@
+@use '../abstracts/mixins' as mixin;
+
+body {
+    .nav-wrapper {
+        @include mixin.transition(inset);
+
+        .nav-middle {
+            @include mixin.transition(margin);
+
+            .app-nav-wrapper {
+                @include mixin.transition(inset);
+
+                .app-nav-menu-icon {
+                    div {
+                        @include mixin.transition(transform, opacity);
+                    }
+                }
+
+                .app-nav {
+                    @include mixin.transition(margin, inset);
+
+                    > ul {
+                        @include mixin.transition(max-block-size);
+                    }
+
+                    > ul > li:has(ul) {
+                        @include mixin.transition(grid-template-rows);
+
+                        ul {
+                            @include mixin.transition(block-size);
+                        }
+                    }
+                }
+            }
+
+            .results-panel {
+                @include mixin.transition(margin);
+            }
+        }
+    }
+
+    main {
+        .sidebar {
+            @include mixin.transition(transform, inline-size);
+
+            .profile-wrapper {
+                .avatar a img {
+                    transition: transform 0.5s ease;
+                }
+            }
+
+            .sidebar-nav {
+                ul {
+                    @include mixin.transition(max-block-size);
+                }
+
+                li.collapsible::after {
+                    @include mixin.transition(transform);
+                }
+            }
+
+            .sidebar-toggle {
+                @include mixin.transition(transform);
+            }
+        }
+
+        section.content {
+            @include mixin.transition(margin, filter);
+
+            .toc {
+                .ul-wrapper {
+                    @include mixin.transition(grid-template-rows);
+                }
+            }
+        }
+    }
+}
