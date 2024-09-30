@@ -1,0 +1,84 @@
+@use '../abstracts/mixins' as mixin;
+
+:root {
+    --scrollthumb-color: var(--surface-4);
+}
+
+$themes: (
+    'light': (
+        'theme-color-hsl': var(--indigo-5-hsl),
+        'theme-color-plus': var(--indigo-7),
+        'selection-bg-color': var(--teal-3),
+        // typography
+        'em-color': var(--red-6),
+        'strong-em-color': var(--pink-6),
+        'del-bg-color': var(--pink-3),
+        'mark-bg-color': var(--yellow-2),
+        // pseudocode
+        'line-num-color': var(--gray-6),
+        'comment-color': var(--sand-6),
+        // link
+        'link': var(--blue-4),
+        'link-visited': var(--purple-7),
+        // default
+        'text-1': var(--gray-9),
+        'text-2': var(--gray-7),
+        'surface-1': var(--gray-0),
+        'surface-2': var(--gray-2),
+        'surface-3': var(--gray-3),
+        'surface-4-hsl': var(--gray-4-hsl)
+    ),
+    'dark': (
+        'theme-color-hsl': var(--yellow-3-hsl),
+        'theme-color-plus': var(--yellow-5),
+        'selection-bg-color': var(--pink-7),
+        // typography
+        'em-color': var(--red-4),
+        'strong-em-color': var(--pink-3),
+        'del-bg-color': var(--pink-7),
+        'mark-bg-color': var(--indigo-5),
+        // pseudocode
+        'line-num-color': var(--stone-6),
+        'comment-color': var(--sand-4),
+        // link
+        'link': var(--violet-3),
+        'link-visited': var(--purple-3),
+        // default
+        'text-1': var(--stone-0),
+        'text-2': var(--stone-4),
+        'surface-1': var(--stone-11),
+        'surface-2': var(--stone-10),
+        'surface-3': var(--stone-9),
+        'surface-4-hsl': var(--stone-8-hsl)
+    )
+);
+
+@mixin generate-theme($theme) {
+    --theme-color-hsl: #{map-get($theme, 'theme-color-hsl')};
+    --theme-color: hsl(#{map-get($theme, 'theme-color-hsl')});
+    --theme-color-plus: #{map-get($theme, 'theme-color-plus')};
+    --selection-bg-color: #{map-get($theme, 'selection-bg-color')};
+    --em-color: #{map-get($theme, 'em-color')};
+    --strong-em-color: #{map-get($theme, 'strong-em-color')};
+    --del-bg-color: #{map-get($theme, 'del-bg-color')};
+    --mark-bg-color: #{map-get($theme, 'mark-bg-color')};
+    --line-num-color: #{map-get($theme, 'line-num-color')};
+    --comment-color: #{map-get($theme, 'comment-color')};
+    --link: #{map-get($theme, 'link')};
+    --link-visited: #{map-get($theme, 'link-visited')};
+    --text-1: #{map-get($theme, 'text-1')};
+    --text-2: #{map-get($theme, 'text-2')};
+    --surface-1: #{map-get($theme, 'surface-1')};
+    --surface-2: #{map-get($theme, 'surface-2')};
+    --surface-3: #{map-get($theme, 'surface-3')};
+    --surface-4-hsl: #{map-get($theme, 'surface-4-hsl')};
+    --surface-4: hsl(#{map-get($theme, 'surface-4-hsl')});
+}
+
+[data-theme='light'] {
+    @include generate-theme(map-get($themes, 'light'));
+}
+
+[data-theme='dark'] {
+    @include generate-theme(map-get($themes, 'dark'));
+}

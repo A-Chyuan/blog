@@ -1,0 +1,9 @@
+@media print {
+    * {
+        background-color: transparent !important;
+    }
+
+    .markdown-section table {
+        inline-size: 100%;
+    }
+}
