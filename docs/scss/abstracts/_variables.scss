@@ -1,0 +1,45 @@
+$duration: 0.5s;
+$timing-function: var(--ease-in-out-5);
+$color-duration: 0.5s;
+$color-time-function: var(--ease-5);
+
+$transitions-map: (
+    grid-template-rows: $duration $timing-function,
+    inset: $duration $timing-function,
+    margin: $duration $timing-function,
+    block-size: $duration $timing-function,
+    max-block-size: $duration $timing-function,
+    inline-size: $duration $timing-function,
+    filter: $duration $timing-function,
+    box-shadow: $duration $timing-function,
+    transform: $duration $timing-function,
+    //
+    color: $color-duration $color-time-function,
+    border-color: $color-duration $color-time-function,
+    background-color: $color-duration $color-time-function,
+    opacity: $color-duration $color-time-function
+);
+
+$z-indexes: (
+    'copy-code-button',
+    'results-panel',
+    'nav-wrapper',
+    'sidebar',
+    'app-nav',
+    'app-nav-menu-icon',
+    'progress',
+    'medium-zoom-overlay',
+    'medium-zoom-image--opened'
+);
+
+$breakpoints: (
+    sm: 576px,
+    // Small tablets and large smartphones
+    md: 768px,
+    // Small tablets
+    lg: 992px,
+    // Tablets and small desktops
+    xl: 1200px,
+    // Large tablets and desktops
+    xxl: 1400px
+);

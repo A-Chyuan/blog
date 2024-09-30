@@ -1,0 +1,51 @@
+@use '../abstracts/mixins' as mixin;
+
+#scroll-up-button,
+#scroll-down-button {
+    padding: 0;
+    position: fixed;
+    inline-size: var(--size-7);
+    aspect-ratio: var(--ratio-square);
+    line-height: var(--size-7);
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-2);
+    background-color: var(--surface-2);
+    color: var(--text-1);
+
+    &:hover {
+        background-color: var(--theme-color);
+        color: var(--surface-1);
+    }
+}
+
+#scroll-up-button {
+    inset: {
+        block-end: calc(2 * var(--size-3) + var(--size-7));
+        inline-end: var(--size-1);
+    }
+}
+
+#scroll-down-button {
+    inset: {
+        block-end: calc(var(--size-3));
+        inline-end: var(--size-1);
+    }
+}
+
+@include mixin.mobile {
+    #scroll-up-button,
+    #scroll-down-button {
+        &:hover {
+            background-color: var(--surface-2);
+            color: var(--text-1);
+        }
+
+        &:active {
+            background-color: var(--theme-color);
+            color: var(--surface-1);
+        }
+    }
+}
