@@ -1,0 +1,42 @@
+@use '../abstracts/mixins' as mixin;
+
+footer {
+    @include mixin.flex(column, stretch, center);
+    gap: var(--size-2);
+    block-size: var(--size-13);
+    padding-inline: var(--size-8);
+
+    .link-wrapper {
+        @include mixin.flex(row, center, center);
+
+        a i::before {
+            display: block;
+            font-size: var(--font-size-4);
+            line-height: var(--size-7);
+            block-size: var(--size-7);
+            aspect-ratio: var(--ratio-square);
+            text: {
+                decoration: none;
+                align: center;
+            }
+            color: var(--theme-color);
+        }
+    }
+
+    .copyright {
+        p {
+            max-inline-size: stretch;
+            text-align: center;
+            color: var(--text-2);
+            font: {
+                size: var(--font-size-3);
+                weight: var(--font-weight-3);
+            }
+        }
+    }
+
+    .browser-compatibility {
+        @include mixin.flex(row, center, center);
+        gap: var(--size-2);
+    }
+}
