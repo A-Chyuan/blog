@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="./css/recipes.css">
+
+- [食譜](/notes/recipes/README)
+- 清炒義大利麵
+    - [蔬菜橄欖](/notes/recipes/義大利麵/蔬菜橄欖)
+    - [蒜香培根](/notes/recipes/義大利麵/蒜香培根)
+    - [蒜香白酒蛤蜊](/notes/recipes/義大利麵/蒜香白酒蛤蜊)
+    - [蒜香櫻桃鴨](/notes/recipes/義大利麵/蒜香櫻桃鴨)
+    - [蒜香番椒雞柳](/notes/recipes/義大利麵/蒜香番椒雞柳)
+    - [干貝XO醬](/notes/recipes/義大利麵/干貝XO醬)
+    - [辣炒海鮮](/notes/recipes/義大利麵/辣炒海鮮)
+- 番茄紅醬義大利麵
+    - [紅茄義式香料雞腿](/notes/recipes/義大利麵/紅茄義式香料雞腿)
+    - [波隆那經典肉醬](/notes/recipes/義大利麵/波隆那經典肉醬)
+    - [泡菜松阪豬](/notes/recipes/義大利麵/泡菜松阪豬)
+- 奶油白醬義大利麵
+    - [奶油白醬](/notes/recipes/義大利麵/奶油白醬)
+    - [泰式香茅](/notes/recipes/義大利麵/泰式香茅)
+    - [明太子](/notes/recipes/義大利麵/明太子)
+    - [南洋椰漿XO醬](/notes/recipes/義大利麵/南洋椰漿XO醬)
+    - [芥末龍蝦沙拉](/notes/recipes/義大利麵/芥末龍蝦沙拉)
+    - [南瓜醬](/notes/recipes/義大利麵/南瓜醬)
+    - [印度咖哩](/notes/recipes/義大利麵/印度咖哩)
+- 九層塔松子青醬義大利麵
+    - [九層塔松子青醬](/notes/recipes/義大利麵/九層塔松子青醬)
+- 燉飯
+    - [黑松露野菇](/notes/recipes/燉飯/黑松露野菇)
+    - [西班牙海鮮](/notes/recipes/燉飯/西班牙海鮮)
+    - [XO醬櫻桃鴨](/notes/recipes/燉飯/XO醬櫻桃鴨)
+    - [火烤墨魚墨汁](/notes/recipes/燉飯/火烤墨魚墨汁)
+- 披薩
+    - [客家鹹豬肉](/notes/recipes/披薩/客家鹹豬肉)
+- 西式醬料
+    - [白醬](/notes/recipes/西式醬料/白醬)
+    - [青醬](/notes/recipes/西式醬料/青醬)
+    - [紅醬](/notes/recipes/西式醬料/紅醬)
+    - [波隆那肉醬](/notes/recipes/西式醬料/波隆那肉醬)
+- 中式醬料
+    - [null](/ ':disabled')
+- 湯麵
+    - [苦茶油麵線](/notes/recipes/湯麵/苦茶油麵線)
+    - [醬油雞湯米線](/notes/recipes/湯麵/醬油雞湯米線)
+    - [清湯烏龍麵](/notes/recipes/湯麵/清湯烏龍麵)
+    - [牛肉烏龍麵](/notes/recipes/湯麵/牛肉烏龍麵)
+- 乾麵
+    - [豆腐乳拌麵](/notes/recipes/乾麵/豆腐乳拌麵)
+    - [肉燥乾麵](/notes/recipes/乾麵/肉燥乾麵)
+    - [麻油雞汁乾麵](/notes/recipes/乾麵/麻油雞汁乾麵)
+- 米飯
+    - [白米飯](/notes/recipes/米飯/白米飯)
+    - [蛋炒飯](/notes/recipes/米飯/蛋炒飯)
+    - [椰奶咖哩飯](/notes/recipes/米飯/椰奶咖哩飯)
+- 五穀根莖類
+    - [焗烤馬鈴薯](/notes/recipes/五穀根莖類/焗烤馬鈴薯)
+    - [馬鈴薯燉肉](/notes/recipes/五穀根莖類/馬鈴薯燉肉)
+- 牛
+    - [牛排](/notes/recipes/牛/牛排)
+    - [鐵板牛柳](/notes/recipes/牛/鐵板牛柳)
+    - [沙茶牛肉炒空心菜](/notes/recipes/牛/沙茶牛肉炒空心菜)
+    - [水煮牛肉](/notes/recipes/牛/水煮牛肉)
+    - [壽喜燒](/notes/recipes/牛/壽喜燒)
+    - [滑蛋牛肉](/notes/recipes/牛/滑蛋牛肉)
+- 雞
+    - [三杯雞](/notes/recipes/雞/三杯雞)
+    - [麻油雞](/notes/recipes/雞/麻油雞)
+    - [韓式辣燉雞](/notes/recipes/雞/韓式辣燉雞)
+    - [烤雞腿排](/notes/recipes/雞/烤雞腿排)
+    - [烤雞翅](/notes/recipes/雞/烤雞翅)
+    - [嫩煎雞胸](/notes/recipes/雞/嫩煎雞胸)
+    - [唐揚雞](/notes/recipes/雞/唐揚雞)
+    - [椒麻雞](/notes/recipes/雞/椒麻雞)
+    - [炸雞排](/notes/recipes/雞/炸雞排)
+- 豬
+    - [打拋豬](/notes/recipes/豬/打拋豬)
+    - [糖醋排骨](/notes/recipes/豬/糖醋排骨)
+- 蝦
+    - [炸蝦球](/notes/recipes/蝦/炸蝦球)
+- 蛋
+    - [蒸蛋](/notes/recipes/蛋/蒸蛋)
+- 豆腐
+    - [麻婆豆腐](/notes/recipes/豆腐/麻婆豆腐)
+    - [鐵板豆腐](/notes/recipes/豆腐/鐵板豆腐)
+    - [老皮嫩肉](/notes/recipes/豆腐/老皮嫩肉)
+    - [煎豆腐](/notes/recipes/豆腐/煎豆腐)
+    - [韓式豆腐鍋](/notes/recipes/豆腐/韓式豆腐鍋)
+    - [日式揚豆腐](/notes/recipes/豆腐/日式揚豆腐)
+- 豆類
+    - [蒜香四季豆](/notes/recipes/豆類/蒜香四季豆)
+- 湯
+    - [鄉村蔬菜湯](/notes/recipes/湯/鄉村蔬菜湯)
+    - [蘿蔔湯](/notes/recipes/湯/蘿蔔湯)
+    - [餛飩湯](/notes/recipes/湯/餛飩湯)
+- 甜點
+    - [古早味花生糖](/notes/recipes/甜點/古早味花生糖)
