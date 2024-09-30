@@ -1,0 +1,29 @@
+@use '../abstracts/mixins' as mixin;
+
+.docsify-pagination-container {
+    @include mixin.flex(column, stretch, center);
+    font-size: var(--font-size-1);
+
+    .pagination-item {
+        margin-inline: 0;
+    }
+
+    .pagination-item-label,
+    .pagination-item-title {
+        transition: none !important;
+    }
+}
+
+.pagination-item--previous .pagination-item-label {
+    @include mixin.flex(row, center, flex-start);
+}
+
+.pagination-item--next .pagination-item-label {
+    @include mixin.flex(row, center, flex-end);
+}
+
+.pagination-item-label {
+    :where(svg, span) {
+        font-size: var(--font-size-2);
+    }
+}

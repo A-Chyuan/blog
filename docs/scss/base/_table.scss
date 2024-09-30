@@ -1,0 +1,45 @@
+@use '../abstracts/mixins' as mixin;
+
+.table-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-block-end: var(--size-3);
+
+    table {
+        margin-inline: auto;
+        min-inline-size: var(--size-14);
+
+        :where(td, th) {
+            white-space: nowrap;
+
+            &[align='left'] {
+                text-align: start;
+            }
+
+            &[align='center'] {
+                text-align: center;
+            }
+
+            &[align='right'] {
+                text-align: end;
+            }
+
+            hr {
+                background-color: var(--surface-2);
+                margin-block: var(--size-3);
+            }
+        }
+
+        tr:hover {
+            td {
+                background-color: var(--surface-3);
+            }
+        }
+    }
+}
+
+@include mixin.mobile {
+    .table-wrapper table {
+        min-inline-size: 100%;
+    }
+}

@@ -1,0 +1,61 @@
+@use '../abstracts/mixins' as mixin;
+
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+details {
+    background-color: var(--surface-1);
+    border: {
+        width: var(--border-size-2);
+        style: solid;
+        color: var(--surface-3);
+        radius: var(--radius-3);
+    }
+
+    &[open] {
+        summary::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+
+    > *:not(summary) {
+        animation: sweep 0.5s ease-in-out;
+    }
+
+    summary {
+        position: relative;
+        cursor: pointer;
+        background-color: var(--surface-3);
+        
+        &::marker {
+            content: '';
+        }
+
+        &::before,
+        &::after {
+            block-size: 2px;
+            inline-size: var(--size-3);
+            position: absolute;
+            inset: {
+                block-start: var(--size-5);
+                inline-end: var(--size-3);
+            }
+            content: '';
+            background-color: var(--text-1);
+            transform: translateY(-50%);
+            @include mixin.transition(transform);
+        }
+
+        &::after {
+            transform: translateY(-50%) rotate(90deg);
+        }
+    }
+}

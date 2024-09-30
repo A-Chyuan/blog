@@ -1,0 +1,4 @@
+- <i class="fa fa-book"></i>Library
+    - [Library Genesis](https://libgen.rs/)
+    - [Z-Library](https://singlelogin.re/)
+    - [Anna's Archive](https://annas-archive.org/)

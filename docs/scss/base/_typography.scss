@@ -1,0 +1,80 @@
+@use '../abstracts/mixins' as mixin;
+
+.markdown-section {
+    > *,
+    :where(p, pre, hr),
+    details > *:not(summary) {
+        margin-block-end: var(--size-5);
+    }
+}
+
+.markdown-section {
+    word-spacing: var(--font-letterspacing-2);
+    padding-block-start: var(--font-size-3);
+    overflow-wrap: break-word;
+
+    * {
+        max-inline-size: unset;
+    }
+
+    > * {
+        // max-inline-size: 100%;
+        overflow-x: auto;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) {
+        font-size: var(--font-size-5);
+    }
+
+    :where(ol, ul) {
+        padding-inline-start: var(--size-6);
+    }
+
+    :where(li) {
+        padding-inline-start: 0;
+    }
+
+    :where(p, ul, ol, table, mjx-container),
+    :where(label, input) {
+        font-size: var(--font-size-3) !important;
+        line-height: var(--font-lineheight-5);
+    }
+
+    ruby rt {
+        font-size: var(--font-size-1);
+        color: var(--em-color);
+    }
+
+    :where(mark, del, code) {
+        padding-inline: var(--size-1);
+    }
+
+    mark {
+        color: var(--text-1);
+        background-color: var(--mark-bg-color);
+    }
+
+    strong {
+        color: var(--theme-color);
+    }
+
+    em {
+        color: var(--em-color);
+    }
+
+    del {
+        color: var(--text-1);
+        background-color: var(--del-bg-color);
+        text-decoration-thickness: 1px;
+    }
+
+    .vertical-text {
+        margin: {
+            inline-end: var(--size-5);
+            block-end: 0;
+        }
+        inline-size: 250px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
+}
