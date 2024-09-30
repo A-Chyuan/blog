@@ -1,0 +1,292 @@
+@use '../abstracts/mixins' as mixin;
+
+.nav-wrapper {
+    border-block-end: var(--border-size-1) solid var(--surface-4);
+
+    &,
+    .results-panel {
+        background-color: var(--surface-1);
+    }
+}
+
+.app-nav {
+    $font-size: var(--font-size-4);
+    $line-height: var(--font-lineheight-4);
+
+    @include mixin.flex(row, center, center);
+    background-color: hsl(var(--surface-4-hsl) / 95%);
+
+    ul {
+        @include mixin.flex(column, stretch, center);
+        gap: var(--size-1);
+
+        &,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li,
+        li a {
+            font: {
+                size: $font-size;
+                weight: var(--font-weight-6);
+            }
+            line-height: $line-height;
+        }
+    }
+
+    li {
+        @include mixin.flex(row, center, flex-start);
+        gap: var(--size-2);
+    }
+
+    // transition
+    > ul > li {
+        &,
+        a {
+            text-decoration: none;
+            color: var(--text-2);
+        }
+
+        li:hover * {
+            color: var(--theme-color);
+        }
+
+        &:not(:has(ul)):hover * {
+            color: var(--theme-color);
+        }
+    }
+
+    // 展開 app-nav 時，也一併展開清單
+    > ul {
+        overflow: hidden;
+        max-block-size: 0;
+
+        .open ~ & {
+            max-block-size: 100%;
+            overflow: visible;
+        }
+    }
+
+    // 展開子清單
+    > ul > li:has(ul) {
+        display: grid;
+        align-items: center;
+        grid-template: {
+            columns: auto 1fr;
+            rows: auto 0fr;
+        }
+        grid: {
+            column-gap: var(--size-2);
+            row-gap: var(--size-1);
+        }
+        overflow: hidden;
+
+        ul {
+            grid-column: {
+                start: 1;
+                end: span 2;
+            }
+            inline-size: max-content;
+            overflow: hidden;
+            block-size: 0;
+            padding-inline-start: var(--size-3);
+        }
+
+        &:hover {
+            grid-template-rows: auto 1fr;
+
+            ul {
+                block-size: 100%;
+            }
+        }
+    }
+}
+
+// 展開 app-nav
+.nav-middle {
+    &:has(.open) {
+        padding-inline-start: var(--size-8) !important;
+    }
+
+    .app-nav-wrapper {
+        @include mixin.flex(row, center, center);
+
+        .app-nav {
+            position: fixed;
+            inset: {
+                block-start: 0;
+                block-end: 100%;
+                inline-start: 0;
+                inline-end: 0;
+            }
+        }
+
+        .open ~ .app-nav {
+            inset: {
+                block-start: 0;
+                block-end: 0;
+                inline-start: 0;
+                inline-end: 0;
+            }
+        }
+    }
+}
+
+// 固定 app-nav icon 位置
+@include mixin.desktop {
+    body.close .app-nav-wrapper:has(.open) {
+        position: fixed;
+        inset-inline-start: var(--size-2);
+    }
+
+    body .app-nav-wrapper:has(.open) {
+        position: fixed;
+        inset-inline-start: calc(20% + var(--size-2));
+    }
+}
+
+@include mixin.mobile {
+    body .app-nav-wrapper:has(.open) {
+        position: fixed;
+        inset-inline-start: calc(var(--size-2));
+    }
+}
+
+// icon style
+.app-nav-menu-icon {
+    $width: var(--size-4);
+
+    cursor: pointer;
+    margin: {
+        inline-start: calc((var(--size-8) - $width) / 2);
+        inline-end: calc((var(--size-8) - $width) / 2 - var(--size-2));
+    }
+
+    div {
+        background-color: var(--text-1);
+        inline-size: $width;
+        block-size: 0.125rem;
+        margin: {
+            block: 0.375rem;
+            inline: auto;
+        }
+    }
+
+    &.open {
+        .bar1 {
+            transform: translateY(var(--size-2)) rotate(-45deg);
+        }
+
+        .bar2 {
+            opacity: 0;
+        }
+
+        .bar3 {
+            transform: translateY(var(--size-000)) rotate(45deg);
+        }
+    }
+}
+
+// search
+.search-wrapper {
+    background-color: var(--surface-2);
+    border: {
+        width: var(--border-size-2);
+        style: solid;
+        color: var(--surface-2);
+        radius: var(--radius-round);
+    }
+    padding-inline: var(--size-2);
+    gap: var(--size-2);
+    inline-size: var(--size-12);
+
+    &::before {
+        content: '\f002';
+        font: var(--fa-font-solid);
+    }
+
+    &::after {
+        content: '/';
+        background-color: var(--surface-1);
+        border-radius: var(--size-2);
+        padding-inline: var(--size-2);
+    }
+
+    &:has(input:focus) {
+        border-color: var(--surface-4);
+    }
+
+    .search {
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        .input-wrap {
+            input {
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+                margin: 0;
+                padding: 0;
+                cursor: text;
+                line-height: var(--font-lineheight-5);
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .clear-button {
+                margin-inline: var(--size-1);
+                font-size: var(--font-size-00);
+                color: var(--text-2);
+                inline-size: auto;
+
+                &:hover {
+                    color: var(--text-1);
+                }
+
+                &::before {
+                    display: block;
+                    font: var(--fa-font-solid);
+                    content: '\f00d';
+                    opacity: 0.5;
+                }
+
+                svg {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+// layout
+.nav-wrapper {
+    .nav-middle,
+    .search-wrapper,
+    .nav-button {
+        @include mixin.flex(row, center, space-between);
+    }
+
+    &,
+    .nav-button-wrapper {
+        @include mixin.flex(row, center, flex-start);
+        gap: var(--size-2);
+    }
+
+    .nav-middle {
+        inline-size: stretch;
+
+        .nav-button-wrapper {
+            margin-inline-start: var(--size-2);
+        }
+
+        .search-wrapper {
+            margin-inline-end: var(--size-2);
+        }
+    }
+}
