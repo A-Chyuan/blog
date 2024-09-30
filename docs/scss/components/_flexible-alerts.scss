@@ -1,0 +1,66 @@
+.alert {
+    display: block;
+    position: relative;
+    word-wrap: break-word;
+    word-break: break-word;
+    padding: var(--size-3);
+
+    > * {
+        max-width: 100%;
+    }
+}
+
+.alert .title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--size-2);
+    font-weight: var(--font-weight-6);
+    margin: 0;
+}
+
+.icon {
+    display: inline-block;
+    font-size: var(--size-4);
+    background-repeat: no-repeat;
+}
+
+.alert.callout {
+    border: {
+        width: var(--border-size-1);
+        style: solid;
+        color: var(--surface-2);
+        radius: var(--size-2);
+        inline-start-width: var(--size-1);
+    }
+}
+
+@mixin alert-style($color) {
+    border-color: $color;
+
+    .title {
+        color: $color;
+    }
+}
+
+.markdown-section {
+    .example {
+        border-color: var(--surface-4);
+    }
+
+    .note {
+        @include alert-style(var(--cyan-5));
+    }
+
+    .tip-alert {
+        @include alert-style(var(--green-6));
+    }
+
+    .warning {
+        @include alert-style(var(--yellow-6));
+    }
+
+    .attention {
+        @include alert-style(var(--red-5));
+    }
+}

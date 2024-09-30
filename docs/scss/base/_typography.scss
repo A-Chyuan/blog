@@ -1,0 +1,117 @@
+@use '../abstracts/mixins' as mixin;
+
+.markdown-section {
+    word-spacing: var(--font-letterspacing-2);
+    padding-block-start: var(--font-size-3);
+    overflow-wrap: break-word;
+
+    * {
+        max-inline-size: unset;
+    }
+
+    > * {
+        overflow-x: auto;
+    }
+}
+
+.markdown-section {
+    > *,
+    p {
+        margin-block-end: var(--size-5);
+    }
+
+    hr {
+        margin-block: var(--size-5);
+    }
+}
+
+.markdown-section {
+    :where(h1, h2, h3, h4, h5, h6) {
+        font-size: var(--font-size-5);
+    }
+
+    :where(p, ul, ol, table, mjx-container),
+    :where(label, input) {
+        font-size: var(--font-size-3) !important;
+        line-height: var(--font-lineheight-4);
+    }
+
+    ruby rt {
+        font-size: var(--font-size-1);
+        color: var(--em-color);
+    }
+
+    :where(mark, del) {
+        padding-inline: var(--size-1);
+    }
+
+    mark {
+        color: var(--text-1);
+        background-color: var(--mark-bg-color);
+    }
+
+    del {
+        color: var(--text-1);
+        background-color: var(--del-bg-color);
+        text-decoration-thickness: 1px;
+    }
+
+    strong {
+        color: var(--theme-color);
+    }
+
+    em {
+        color: var(--em-color);
+    }
+
+    .warn {
+        border-radius: var(--radius-2);
+        padding: var(--size-3);
+
+        @include mixin.theme-property(background, var(--green-1), var(--cyan-6));
+    }
+
+    .tip {
+        $border-size: 4px;
+
+        background-color: var(--surface-2);
+        border: {
+            inline-start: $border-size solid var(--red-5);
+            start-end-radius: var(--radius-2);
+            end-end-radius: var(--radius-2);
+        }
+        padding: var(--size-3);
+        position: relative;
+        overflow: visible;
+
+        &::before {
+            background-color: var(--red-5);
+            border-radius: var(--radius-round);
+            color: var(--gray-0);
+            content: '!';
+            font: {
+                size: var(--font-size-1);
+                weight: var(--font-weight-7);
+            }
+            line-height: var(--font-size-3);
+            text-align: center;
+            position: absolute;
+            inset: {
+                block-start: var(--font-size-3);
+                inline-start: calc(-0.5 * ($border-size + var(--font-size-3)));
+            }
+            inline-size: var(--font-size-3);
+            block-size: var(--font-size-3);
+        }
+    }
+
+    .vertical-text {
+        margin: {
+            inline-end: var(--size-5);
+            block-end: 0;
+        }
+        inline-size: 250px;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
+}

@@ -1,0 +1,8 @@
+.edit-on-github {
+    color: var(--theme-color);
+
+    &::before {
+        font: var(--fa-font-solid);
+        content: '\f31c';
+    }
+}
