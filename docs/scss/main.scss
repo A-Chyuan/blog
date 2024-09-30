@@ -1,0 +1,43 @@
+@use 'article';
+@use 'base';
+@use 'components';
+@use 'layout';
+@use 'theme';
+
+/* css variables */
+@import 'https://unpkg.com/open-props';
+@import 'https://unpkg.com/open-props/colors-hsl.min.css';
+
+html {
+    font: {
+        size: 16px;
+        family:
+            Calibri,
+            Noto Sans TC;
+    }
+}
+
+* {
+    text-size-adjust: none;
+    -webkit: {
+        font-smoothing: antialiased;
+        overflow-scrolling: touch;
+        tap-highlight-color: transparent;
+        touch-callout: none;
+    }
+}
+
+::selection {
+    color: var(--text-1);
+    background-color: var(--selection-bg-color);
+}
+
+@font-face {
+    font-family: elffont-rock;
+    src: url('../font/elffont-rock.otf');
+}
+
+@font-face {
+    font-family: elffont-fern;
+    src: url('../font/elffont-fern.otf');
+}

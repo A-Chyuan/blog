@@ -1,0 +1,87 @@
+@use '../abstracts/mixins' as mixin;
+
+@mixin nested-list($i, $max) {
+    a {
+        padding-inline-start: calc($i * var(--font-size-3));
+    }
+
+    @if $i < $max {
+        li {
+            @include nested-list($i + 1, $max);
+        }
+    }
+}
+
+// indent
+.toc-wrapper li li {
+    @include nested-list(1, 5);
+}
+
+.toc-wrapper {
+    li {
+        list-style: none;
+        padding: 0;
+        letter-spacing: normal;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li li a {
+        display: block;
+        border-inline-start: var(--border-size-2) solid transparent;
+        line-height: var(--font-lineheight-4);
+        font: {
+            size: var(--font-size-1);
+            weight: var(--font-weight-4);
+        }
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:hover {
+            color: var(--theme-color);
+        }
+    }
+}
+
+// 摺疊功能
+.toc-wrapper li li {
+    .ul-wrapper {
+        display: grid;
+        grid-template-rows: 0fr;
+
+        ul {
+            overflow: hidden;
+        }
+    }
+
+    &:has(.active) > .ul-wrapper,
+    &.active > .ul-wrapper,
+    &:hover > .ul-wrapper {
+        grid-template-rows: 1fr;
+    }
+
+    &:has(.active) > a,
+    &.active > a {
+        border-color: var(--theme-color);
+    }
+}
+
+.toc {
+    margin-block-start: calc(var(--size-8) + var(--font-size-3));
+}
+
+.toc > li {
+    font: {
+        size: var(--font-size-2);
+        weight: var(--font-weight-6);
+    }
+}
+
+.toc,
+.toc > li > .ul-wrapper > ul {
+    margin-block-start: var(--font-size-3);
+    padding: 0;
+}
