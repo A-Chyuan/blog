@@ -1,0 +1,83 @@
+@use '../abstracts/mixins' as mixin;
+
+.search-wrapper {
+    .search {
+        .results-panel {
+            position: fixed;
+            inline-size: stretch;
+            overflow-y: scroll;
+            inset: {
+                block-start: var(--size-8);
+                block-end: 0;
+                inline-start: 0;
+                inline-end: 0;
+            }
+            padding: {
+                block-start: var(--size-8);
+                block-end: var(--size-12);
+                inline: var(--size-11);
+            }
+            @include mixin.mobile {
+                padding-inline: var(--size-8);
+            }
+
+            &.show {
+                display: grid;
+                align-items: start;
+                grid-template-columns: calc(50% - var(--size-8) / 2) calc(50% - var(--size-8) / 2);
+                column-gap: var(--size-8);
+                row-gap: var(--size-8);
+
+                &:has(.empty) {
+                    grid-template-columns: 100%;
+                }
+
+                @include mixin.mobile {
+                    grid-template-columns: 100%;
+                }
+            }
+
+            .matching-post {
+                padding: var(--font-size-3);
+                border: {
+                    width: var(--border-size-2);
+                    style: solid;
+                    color: var(--surface-1);
+                    radius: var(--radius-3);
+                }
+
+                &:hover {
+                    border-color: var(--theme-color);
+                }
+            }
+
+            h2 {
+                font: {
+                    size: var(--font-size-4);
+                    weight: var(--font-weight-4);
+                }
+                color: var(--theme-color);
+                max-inline-size: unset;
+                @include mixin.ellipsis;
+            }
+
+            p {
+                font-size: var(--font-size-2);
+            }
+
+            em {
+                background-color: var(--selection-bg-color);
+            }
+
+            .empty {
+                color: var(--text-2);
+                max-inline-size: unset;
+                @include mixin.flex(column, center, center);
+            }
+        }
+    }
+}
+
+body:has(.results-panel.show) .content {
+    display: none;
+}

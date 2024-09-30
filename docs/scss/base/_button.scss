@@ -1,0 +1,82 @@
+@import 'https://unpkg.com/open-props/buttons.min.css';
+
+button {
+    margin: var(--size-2);
+    // padding-inline: var(--font-size-0);
+    // line-height: var(--font-lineheight-5);
+    // border-radius: var(--radius-2);
+    // box-shadow: var(--shadow-1);
+
+    // &:hover {
+    //     background-color: var(--surface-3);
+    //     box-shadow: var(--shadow-2);
+    // }
+}
+
+.nav-button-wrapper,
+.sidebar-button-wrapper {
+    button {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+
+        &,
+        a,
+        i {
+            display: block;
+            font-size: var(--font-size-4);
+            line-height: var(--size-7);
+            block-size: var(--size-7);
+            aspect-ratio: var(--ratio-square);
+            text-decoration: none;
+            border-radius: var(--radius-round);
+        }
+
+        & a i {
+            font-size: var(--font-size-2);
+        }
+    }
+}
+
+.nav-button-wrapper button {
+    background-color: transparent;
+
+    div {
+        background-color: var(--text-2);
+    }
+
+    &:hover div {
+        background-color: var(--text-1);
+    }
+
+    &:hover {
+        color: var(--text-1);
+        background-color: transparent;
+    }
+}
+
+.sidebar-button-wrapper button {
+    background-color: var(--surface-2);
+
+    a,
+    a i {
+        color: var(--text-2);
+
+        &:hover {
+            color: var(--text-1);
+        }
+    }
+
+    svg,
+    i::before {
+        filter: drop-shadow(0 var(--border-size-2) var(--surface-4));
+    }
+}
+
+.theme-toggle svg {
+    margin-inline: auto;
+    inline-size: var(--font-size-4);
+    aspect-ratio: var(--ratio-square);
+    padding: 5px;
+}

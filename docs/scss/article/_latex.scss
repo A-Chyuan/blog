@@ -1,0 +1,17 @@
+.markdown-section {
+    docsify-latex {
+        // 在開闔側邊攔時，讓 MathJax ( $$...$$ ) 自適應寬度
+        &[display="true"] {
+            inline-size: 100% !important;
+        }
+
+        &[display="false"] {
+            margin-inline: var(--size-1);
+        }
+
+        mjx-container {
+            cursor: auto;
+            font-size: 1em !important;
+        }
+    }
+}
