@@ -1,0 +1,95 @@
+@use '../abstracts/mixins' as mixin;
+
+$text-shadow: 0.1em 0.1em 0.2em;
+
+table {
+    min-inline-size: 300px;
+}
+
+ruby rt {
+    color: var(--red-5);
+    font: {
+        size: var(--font-size-1);
+        weight: var(--font-weight-6);
+    }
+}
+
+.markdown-section h1 a {
+    background: rgba(0, 0, 0, 0.5);
+    padding-inline: var(--font-size-1);
+    position: absolute;
+    inset: {
+        block-end: 0;
+        inline-start: 0;
+        inline-end: 0;
+    }
+    border: {
+        bottom-left-radius: var(--radius-3);
+        bottom-right-radius: var(--radius-3);
+    }
+    line-height: 3;
+}
+
+.markdown-section h1 {
+    a,
+    a:hover,
+    &::after {
+        text-decoration: none;
+        color: var(--gray-0);
+        text-shadow: var(--gray-9) $text-shadow;
+    }
+}
+
+.markdown-section h1 {
+    position: relative;
+    border-radius: var(--radius-3);
+    background: {
+        position: center;
+        repeat: no-repeat;
+        size: cover;
+    }
+    @include mixin.transition(transform, box-shadow);
+
+    & {
+        inline-size: 100%;
+        box-shadow: var(--shadow-2);
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-4);
+        }
+    }
+
+    & {
+        &::after {
+            @include mixin.transition(opacity);
+            opacity: 0;
+            position: absolute;
+            inset: {
+                block-end: var(--font-size-00);
+                inline-end: var(--font-size-1);
+            }
+            display: inline-block;
+            font: {
+                size: var(--font-size-1);
+                weight: var(--font-weight-6);
+            }
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+}
+
+@include mixin.desktop {
+    .markdown-section h1 {
+        aspect-ratio: var(--ratio-widescreen);
+    }
+}
+
+@include mixin.mobile {
+    .markdown-section h1 {
+        aspect-ratio: var(--ratio-portrait);
+    }
+}
