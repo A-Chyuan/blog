@@ -1,0 +1,62 @@
+@use '../abstracts/mixins' as mixin;
+
+.profile-wrapper {
+    margin-block: var(--size-4);
+    @include mixin.flex(column, center, center);
+    gap: var(--size-3);
+}
+
+.avatar a {
+    display: block;
+    margin-inline: auto;
+    inline-size: 6rem;
+    aspect-ratio: var(--ratio-square);
+    background-size: cover;
+    border: {
+        width: var(--border-size-2);
+        style: solid;
+        color: var(--stone-4);
+        radius: var(--radius-round);
+    }
+    box-shadow: var(--shadow-2);
+    overflow: hidden;
+
+    &:hover img {
+        transform: scale(1.2);
+    }
+}
+
+.site-title {
+    @include mixin.flex(column, center, center);
+    gap: var(--size-3);
+    inline-size: 100%;
+
+    a,
+    .site-subtitle {
+        white-space: nowrap;
+    }
+
+    i {
+        color: var(--surface-4);
+    }
+
+    a {
+        font: {
+            family: Tangerine;
+            size: var(--font-size-6);
+            weight: var(--font-weight-9);
+        }
+        block-size: var(--size-8);
+        color: var(--theme-color);
+        text-shadow: 4px 4px 4px var(--surface-4);
+    }
+
+    .site-subtitle {
+        @include mixin.flex(row, center, center);
+        gap: var(--font-size-0);
+    }
+}
+
+.sidebar-button-wrapper {
+    @include mixin.flex(row, center, center);
+}

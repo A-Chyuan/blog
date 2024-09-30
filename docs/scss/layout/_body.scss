@@ -1,0 +1,83 @@
+@use '../abstracts/mixins' as mixin;
+
+$navbar-height: var(--size-8);
+$padding-inline: var(--size-8);
+
+body {
+    &,
+    .sidebar,
+    section.content {
+        @include mixin.flex(column, stretch, flex-start);
+        gap: var(--size-5);
+    }
+
+    .nav-wrapper {
+        position: sticky;
+        inset-block-start: 0;
+        block-size: $navbar-height;
+    }
+
+    main {
+        .sidebar {
+            position: fixed;
+            inset: {
+                block-start: 0;
+                block-end: 0;
+                inline-start: 0;
+            }
+            gap: 0;
+        }
+
+        .markdown-section {
+            margin-inline: $padding-inline;
+        }
+    }
+}
+
+@include mixin.desktop {
+    $sidebar-width: 20%;
+
+    .nav-wrapper .nav-middle,
+    .nav-wrapper .app-nav,
+    main section.content,
+    .results-panel {
+        margin-inline-start: $sidebar-width;
+    }
+
+    main {
+        .sidebar,
+        .toc-wrapper {
+            inline-size: $sidebar-width;
+        }
+
+        section.content {
+            margin-inline-end: $sidebar-width;
+        }
+
+        .toc-wrapper {
+            position: fixed;
+            inset: {
+                block-start: 0;
+                block-end: var(--size-11);
+                inline-end: 0;
+            }
+            padding-block-start: $navbar-height;
+            overflow: auto;
+        }
+    }
+}
+
+@include mixin.mobile {
+    .nav-wrapper .nav-middle,
+    main section.content {
+        margin-inline-start: 0;
+    }
+
+    main .sidebar {
+        inline-size: calc(100% - $padding-inline);
+    }
+
+    .toc-wrapper {
+        margin-inline: $padding-inline;
+    }
+}

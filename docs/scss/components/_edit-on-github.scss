@@ -1,0 +1,18 @@
+@use '../abstracts/mixins' as mixin;
+
+#article-info {
+    @include mixin.flex(row, center, space-between);
+
+    #edit-on-github {
+        color: var(--theme-color);
+    
+        &::before {
+            font: var(--fa-font-solid);
+            content: '\f31c';
+        }
+    }
+
+    #word-count {
+        color: var(--text-2);
+    }
+}

@@ -1,0 +1,13 @@
+.graphviz {
+    margin-block-end: var(--size-5);
+    overflow-x: auto;
+
+    svg {
+        margin: 0 auto;
+
+        text {
+            font-family: Calibri, Noto Sans TC;
+            font-size: var(--font-size-3);
+        }
+    }
+}

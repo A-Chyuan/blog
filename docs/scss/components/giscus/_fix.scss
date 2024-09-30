@@ -1,0 +1,4 @@
+/* 嵌入的 body 不知道為什麼會超出 iframe 寬度，導致登入後顯示本人留言框的 border 溢出 */
+#__next {
+    padding-inline-end: 1px;
+}

@@ -1,0 +1,429 @@
+@use '../abstracts/mixins' as mixin;
+
+.moon-cat-wrapper {
+    .tail,
+    .tail-mask,
+    .tail-end {
+        @include mixin.transition(transform);
+    }
+
+    .cat {
+        @include mixin.transition(inset);
+    }
+}
+
+$bgcolor: var(--surface-1);
+$moon-color: var(--stone-8);
+$moon-potholes-color: var(--stone-10);
+$cat-skin-color: #e9cba7;
+$cat-skin-shadow: #d3b897;
+$cat-fur-color: #c0a98b;
+$block-size: 400px;
+
+.moon-cat-wrapper {
+    position: relative;
+    inline-size: 100%;
+    block-size: $block-size;
+    background: $bgcolor;
+    border-radius: var(--radius-3);
+
+    &:hover {
+        .cat {
+            inset-block-end: 250px;
+        }
+
+        .tail,
+        .tail-mask,
+        .tail-end {
+            transform: translateY(-5px);
+        }
+    }
+
+    div {
+        display: block;
+        margin: auto;
+        position: absolute;
+        inset: 0;
+    }
+
+    $clouds: ('https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/clouds_2.png' 1000px 80s),
+        ('https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/clouds_1.png' 1000px 60s),
+        ('https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/clouds_3.png' 1579px 68s);
+
+    @for $i from 1 through length($clouds) {
+        $item: nth($clouds, $i);
+        $path: nth($item, 1);
+        $width: nth($item, 2);
+        $duration: nth($item, 3);
+
+        @keyframes clouds-loop-#{$i} {
+            to {
+                background-position: -$width 0;
+            }
+        }
+
+        .clouds-#{$i} {
+            background-image: url($path);
+            animation: clouds-loop-#{$i} $duration infinite linear;
+        }
+    }
+
+    .clouds {
+        opacity: 0.25;
+        pointer-events: none;
+        // overflow: hidden;
+        // border-radius: 1em;
+    }
+
+    .clouds-1,
+    .clouds-2,
+    .clouds-3 {
+        block-size: $block-size;
+        background-repeat: repeat-x;
+        inset: {
+            block-start: 0;
+            inline-end: 0;
+            inline-start: 0;
+        };
+    }
+
+    .moon {
+        block-size: 120px;
+        inline-size: 120px;
+        border-radius: var(--radius-round);
+        background-color: $moon-color;
+        box-shadow: 0 0 60px 1px $moon-potholes-color;
+        z-index: 0;
+
+        &::before {
+            content: '';
+            border-radius: var(--radius-round);
+            background: $moon-potholes-color;
+            box-shadow:
+                10px -50px 0 0 $moon-potholes-color,
+                50px 0 0 0 $moon-potholes-color,
+                50px -37px 0 10px$moon-potholes-color;
+            position: absolute;
+            inline-size: 20px;
+            block-size: 20px;
+            inset: {
+                inline-start: 30px;
+                block-end: 10px;
+            };
+        }
+    }
+
+    .tail {
+        block-size: 50px;
+        inline-size: 60px;
+        border: {
+            width: 15px;
+            style: solid;
+            color: $cat-skin-color;
+            radius: 25px;
+        }
+        display: inline-block;
+        z-index: 0;
+        inset: {
+            block-end: 110px;
+            inline-start: 60px;
+        };
+    }
+
+    .tail-mask {
+        block-size: 30px;
+        inline-size: 70px;
+        background-color: $bgcolor;
+        z-index: 0;
+        inset: {
+            inline-start: 60px;
+            block-end: 150px;
+        };
+    }
+
+    .tail-end {
+        block-size: 16px;
+        inline-size: 16px;
+        border-radius: var(--radius-round);
+        background-color: $cat-skin-color;
+        z-index: 0;
+        inset: {
+            inline-start: 103px;
+            block-end: 115px;
+        };
+    }
+
+    .cat {
+        background: $cat-skin-color;
+        block-size: 60px;
+        inline-size: 60px;
+        z-index: 0;
+        inset: {
+            block-start: auto;
+            block-end: 200px;
+        };
+
+        // ear
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            inset-block-end: 50px;
+            block-size: 22px;
+            inline-size: 25px;
+            background-color: $cat-skin-color;
+            z-index: 1;
+        }
+
+        &::before {
+            clip-path: polygon(0 0, 0% 100%, 100% 60%);
+            inset-inline-start: 0;
+        }
+
+        &::after {
+            clip-path: polygon(100% 0, 0% 60%, 100% 100%);
+            inset-inline-end: 0;
+        }
+
+        .ear-inner {
+            inset-block-end: 60px;
+            background-color: $cat-skin-shadow;
+            block-size: 15px;
+            inline-size: 25px;
+            z-index: 3;
+        }
+
+        .ear-inner-left {
+            clip-path: polygon(0 0, 100% 90%, 0 100%);
+            inset-inline-end: 30px;
+        }
+
+        .ear-inner-right {
+            clip-path: polygon(100% 0%, 100% 100%, 0 90%);
+            inset-inline-start: 30px;
+        }
+
+        .mask {
+            position: relative;
+            inset-block-start: 0;
+            background-color: $cat-skin-color;
+            border-radius: 50%;
+            block-size: 25px;
+            inline-size: 60px;
+            z-index: 4;
+        }
+
+        .patch {
+            z-index: 5;
+            inset-block-start: 0;
+
+            .fur {
+                inline-size: 4px;
+                background-color: $cat-fur-color;
+
+                &:first-of-type {
+                    inset: {
+                        block-end: 44px;
+                        inline-end: 12px;
+                    };
+                    block-size: 15px;
+                }
+
+                &:nth-of-type(2) {
+                    inset: {
+                        block-end: 52px;
+                        inline-start: 0;
+                    };
+                    block-size: 7px;
+                }
+
+                &:nth-of-type(3) {
+                    inset: {
+                        block-end: 50px;
+                        inline-start: 12px;
+                    };
+                    block-size: 10px;
+                }
+            }
+        }
+
+        .eyes {
+            position: absolute;
+            inset-block-start: 20px;
+            block-size: 9px;
+            inline-size: 9px;
+            background-color: #333;
+            border-radius: 100%;
+            z-index: 5;
+
+            &.left {
+                inset-inline-start: 15px;
+            }
+
+            &.right {
+                inset-inline-end: 15px;
+            }
+
+            &::after {
+                display: inline-block;
+                position: absolute;
+                content: '';
+                block-size: 4px;
+                inline-size: 4px;
+                border-radius: 50%;
+                background-color: #fff;
+                z-index: 6;
+            }
+        }
+
+        .whisk-left,
+        .whisk-right {
+            display: inline-block;
+            position: relative;
+        }
+
+        .whisk-left {
+            inset-inline-start: -5px;
+        }
+
+        .whisk-right {
+            inset-inline-start: 50px;
+        }
+
+        .whisker {
+            block-size: 1.5px;
+            inline-size: 12px;
+            background-color: $cat-skin-shadow;
+            margin-block-end: 14px;
+        }
+
+        .whisk-one {
+            transform: rotate(10deg);
+            margin-block-end: 18px;
+        }
+
+        .whisk-three {
+            transform: rotate(-10deg);
+            margin-block-end: 10px;
+        }
+
+        .whisk-four {
+            transform: rotate(-10deg);
+            margin-block-end: 18px;
+        }
+
+        .whisk-six {
+            transform: rotate(10deg);
+            margin-block-end: 10px;
+        }
+
+        .nose {
+            block-size: 8.5px;
+            inline-size: 9px;
+            background-color: #554d44;
+            clip-path: ellipse(40% 22% at 50% 50%);
+            z-index: 6;
+        }
+
+        .smile {
+            z-index: 5;
+            inset-block-end: 1px;
+        }
+
+        .smile-left-align {
+            display: inline-block;
+        }
+
+        .smile-left {
+            block-size: 5px;
+            inline-size: 10px;
+            background-color: $cat-skin-color;
+            border: {
+                width: 2px;
+                style: solid;
+                color: #554d44;
+                radius: 0 0 10px 10px;
+            }
+            inset: {
+                inline-end: 10px;
+                block-start: 5px;
+            };
+        }
+
+        .mask-left {
+            block-size: 2px;
+            inline-size: 10px;
+            background-color: $cat-skin-color;
+            inset: {
+                block-start: 2px;
+                inline-end: 10px;
+            };
+        }
+
+        .smile-right-align {
+            display: inline-block;
+        }
+
+        .smile-right {
+            block-size: 5px;
+            inline-size: 10px;
+            background-color: $cat-skin-color;
+            border: {
+                width: 2px;
+                style: solid;
+                color: #554d44;
+                radius: 0 0 10px 10px;
+            }
+            inset: {
+                inline-start: 10px;
+                block-start: 5px;
+            };
+        }
+
+        .mask-right {
+            block-size: 2px;
+            inline-size: 10px;
+            background-color: $cat-skin-color;
+            inset: {
+                block-start: 2px;
+                inline-start: 10px;
+            };
+        }
+
+        .tummy {
+            inset-block-start: 35px;
+            block-size: 15px;
+            inline-size: 30px;
+            border-radius: 25px 25px 0 0;
+            background-color: #f4e7d1;
+        }
+    }
+}
+
+.moon-cat-wrapper .signature {
+    font-family: Tangerine;
+    inset: {
+        block-end: 0;
+        block-start: auto;
+    };
+    @include mixin.flex(column, center, center);
+    margin: {
+        inline: 10%;
+        block: var(--font-size-00)
+    };
+
+    &::before {
+        content: 'Idea from Angela Velasquez, Maeve, and Vavik';
+        display: block;
+        color: var(--text-1);
+        font-size: 1.5em;
+        text: {
+            align: center;
+            indent: 0;
+        };
+    }
+
+    i {
+        color: #ac1d3f;
+    }
+}

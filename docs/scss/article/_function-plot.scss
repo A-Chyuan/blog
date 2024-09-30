@@ -1,0 +1,20 @@
+@use '../abstracts/mixins' as mixin;
+
+div:has(.function-plot) {
+    @include mixin.flex(column, center, flex-start);
+    margin-block-end: var(--size-5);
+}
+
+.function-plot {
+    text {
+        fill: var(--text-1);
+        font-size: var(--font-size-1);
+    }
+
+    path.origin,
+    path.domain,
+    .annotations path {
+        stroke: var(--surface-4);
+        opacity: 1;
+    }
+}

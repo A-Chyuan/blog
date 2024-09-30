@@ -1,0 +1,22 @@
+@use '../abstracts/mixins' as mixin;
+
+.markdown-section .image-container {
+    @include mixin.flex(column, center, center);
+    gap: var(--font-size-1);
+
+    img {
+        max-block-size: 70vh;
+        max-inline-size: 80%;
+    }
+
+    figcaption {
+        font-size: var(--font-size-3);
+        text-align: center;
+
+        &:has(.figure-num):has(.figure-title) {
+            .figure-num {
+                font-weight: var(--font-weight-6);
+            }
+        }
+    }
+}

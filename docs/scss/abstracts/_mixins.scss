@@ -1,0 +1,50 @@
+@use 'sass:map';
+@use 'variables' as variable;
+
+@mixin transition($props...) {
+    $transitions: (0s);
+
+    @each $prop in $props {
+        $transition-value: map-get(variable.$transitions-map, $prop);
+        @if $transition-value {
+            $transitions: append($transitions, $prop + ' ' + $transition-value, comma);
+        }
+    }
+
+    transition: $transitions;
+}
+
+@mixin ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin theme-property($property, $light-value, $dark-value) {
+    [data-theme='light'] & {
+        #{$property}: $light-value;
+    }
+
+    [data-theme='dark'] & {
+        #{$property}: $dark-value;
+    }
+}
+
+@mixin flex($direction, $align-items, $justify-content) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
+
+@mixin mobile {
+    @media (max-width: map.get(variable.$breakpoints, md)) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: map.get(variable.$breakpoints, md)) {
+        @content;
+    }
+}

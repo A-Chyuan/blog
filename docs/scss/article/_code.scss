@@ -1,0 +1,114 @@
+.markdown-section {
+    code {
+        padding-inline: var(--size-1);
+    }
+
+    :where(code, pre) {
+        font-size: var(--font-size-1);
+    }
+
+    // inline code
+    *:not(pre) > code {
+        display: inline-block;
+        border: {
+            width: var(--border-size-2);
+            style: solid;
+            color: var(--orange-2);
+            radius: var(--radius-2);
+        }
+        background-color: var(--orange-0);
+        color: var(--orange-7);
+        white-space: pre-wrap;
+        block-size: var(--font-size-4);
+        line-height: var(--font-size-4);
+        padding-block: 0;
+    }
+
+    // code block
+    pre {
+        position: relative;
+        margin: 0;
+        margin-block-end: var(--size-5);
+        padding: {
+            inline: var(--size-5);
+        }
+        color: var(--text-1);
+        background-color: var(--surface-2);
+        border: {
+            width: var(--border-size-2);
+            style: solid;
+            color: var(--surface-3);
+            radius: var(--radius-3);
+        }
+
+        &::after {
+            color: var(--text-2);
+            opacity: 0.5;
+            font: {
+                size: var(--font-size-1);
+                weight: var(--font-weight-6);
+            }
+            line-height: 1;
+            padding: 0;
+            position: absolute;
+            inset: {
+                block-start: var(--size-3);
+                inline-end: var(--size-3);
+            }
+            content: attr(data-lang);
+        }
+
+        > code {
+            font-size: var(--font-size-1);
+            font-family: var(--font-monospace-code);
+            display: block;
+            margin: 0;
+            padding: 0;
+            padding-block: var(--size-4);
+            overflow: auto;
+            color: inherit;
+            background-color: inherit;
+
+            .token.operator,
+            .token.entity,
+            .token.url,
+            .language-css .token.string,
+            .style .token.string {
+                background-color: transparent;
+            }
+        }
+
+        button {
+            padding: unset;
+            position: absolute;
+            inset: {
+                block-start: calc(var(--size-3) - var(--size-2));
+                inline-end: calc(var(--size-3) - var(--size-2));
+            }
+
+            span {
+                display: block;
+                color: var(--text-2);
+            }
+
+            .label {
+                font-size: var(--font-size-1);
+                inline-size: var(--size-6);
+                aspect-ratio: var(--ratio-square);
+            }
+
+            &,
+            .error,
+            .success {
+                line-height: var(--size-6);
+                background-color: var(--surface-2);
+                border: {
+                    width: var(--border-size-2);
+                    style: solid;
+                    color: var(--surface-4);
+                    radius: var(--radius-2);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@use '../abstracts/mixins' as mixin;
+@use '../components/moon-cat';
+
+#article-info,
+#dictionary-box {
+    display: none;
+}
+
+.collapsible::before,
+.collapsible a::before {
+    display: none;
+}
+
+.docsify-pagination-container {
+    opacity: 0;
+}
+
+main .toc-wrapper {
+    inset-block-end: 0;
+}
+
+.toc {
+    display: none;
+}
+
+.bg-cat-1 {
+    background-image: url(https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/cat_1.jpeg);
+    block-size: 30vh;
+}
+
+.bg-cat-1:nth-of-type(4) {
+    block-size: 50vh;
+}
+
+.bg-cat-2 {
+    background-image: url(https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/cat_2.jpg);
+    block-size: 40vh;
+}
+
+.bg-cat-1,
+.bg-cat-2,
+.toc-wrapper {
+    background: {
+        attachment: fixed;
+        position: center;
+        repeat: no-repeat;
+        size: cover;
+    }
+}
+
+.toc-wrapper {
+    background-image: url(https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/cat_1.jpeg);
+    
+    &::after {
+        opacity: 0;
+        @include mixin.transition(opacity);
+        content: 'Mikhail Vasilyev';
+        position: fixed;
+        inset-block-end: 0;
+        display: inline-block;
+        inline-size: fill-available;
+        color: var(--stone-0);
+        font: {
+            size: var(--font-size-0);
+            weight: var(--font-weight-6);
+        }
+        text: {
+            align: center;
+            shadow: var(--stone-11) 0.1rem 0.1rem 0.2rem;
+        }
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+}
+
+.bg-cat-1,
+.bg-cat-2,
+.moon-cat-wrapper {
+    border-radius: var(--radius-3);
+}

@@ -1,0 +1,321 @@
+@use '../abstracts/mixins' as mixin;
+
+.sidebar {
+    background-color: var(--surface-2);
+}
+
+.sidebar-nav {
+    $font-size: var(--font-size-1);
+    $line-height: 2.5;
+
+    overflow-y: scroll;
+    block-size: stretch;
+
+    // 捲軸置左
+    & {
+        direction: rtl;
+
+        > ul {
+            direction: ltr;
+        }
+    }
+
+    // 底部漸層效果
+    &::after {
+        background-color: var(--surface-2);
+        mask-image: linear-gradient(transparent, var(--surface-2) var(--size-8));
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    :where(li, a) {
+        @include mixin.ellipsis;
+        margin: 0;
+        padding: 0;
+        text-indent: var(--font-size-00);
+        line-height: $line-height;
+        font: {
+            size: $font-size;
+            weight: var(--font-weight-6);
+        }
+    }
+
+    li {
+        list-style: none;
+        max-inline-size: unset;
+    }
+
+    a {
+        display: block;
+        margin-block: var(--size-1);
+        padding-inline: var(--font-size-00);
+        border: {
+            width: var(--border-size-2);
+            style: solid;
+            color: var(--surface-2);
+            radius: var(--radius-2);
+        }
+    }
+
+    > ul {
+        margin: 0;
+        padding: {
+            inline: var(--font-size-3);
+            block-end: var(--size-9);
+        }
+
+        ul a {
+            padding-inline: var(--font-size-1);
+        }
+    }
+
+    // transition
+    > ul > li {
+        &:not(:last-child) {
+            border-block-end: var(--border-size-1) solid var(--surface-3);
+        }
+
+        &.current a,
+        li.current a {
+            border-color: var(--theme-color);
+        }
+
+        &.collapsible.close a {
+            border-color: var(--surface-3);
+        }
+
+        &.collapsible:hover,
+        &:has(.current),
+        &:not(.current) > a:hover,
+        li:not(.current) a:hover {
+            color: var(--theme-color);
+        }
+
+        &.collapsible.close:hover,
+        a:hover,
+        &.current a,
+        li.current a {
+            background-color: var(--surface-3);
+        }
+    }
+
+    // chapter and section
+    li.collapsible {
+        counter-increment: chapter;
+
+        &::before,
+        > ul a::before {
+            font: {
+                size: var(--font-size-1);
+                weight: var(--font-weight-6);
+            }
+        }
+
+        &::before {
+            content: '【' counter(chapter) '】';
+        }
+
+        > ul {
+            counter-reset: section;
+
+            > li {
+                counter-increment: section;
+            }
+
+            a::before {
+                content: '【' counter(chapter) '-' counter(section) '】';
+            }
+        }
+    }
+
+    li.collapsible {
+        position: relative;
+        cursor: pointer;
+        padding: {
+            block: var(--size-1);
+            inline-end: calc(var(--font-size-1) + var(--font-size-00));
+        }
+
+        // 摺疊符號
+        &:has(li) {
+            &::after {
+                font: var(--fa-font-solid);
+                content: '\f107';
+                font-size: $font-size;
+                line-height: $line-height;
+                position: absolute;
+                inset: {
+                    block-start: 0;
+                    inline-end: var(--font-size-00);
+                }
+                margin-block: var(--size-1);
+                text-indent: 0;
+            }
+
+            &:not(.close)::after {
+                transform: scaleY(-1);
+            }
+        }
+
+        // ':chapter-skipped'
+        &:not(:has(li)) {
+            opacity: 0.5;
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
+
+        // ':section-skipped'
+        li a[disabled] {
+            text-decoration: line-through;
+        }
+    }
+}
+
+.sidebar-toggle {
+    padding: 0;
+    inline-size: var(--size-7);
+    aspect-ratio: var(--ratio-square);
+    background-color: var(--surface-2);
+    box-shadow: var(--shadow-2);
+    border: none;
+    border-radius: var(--radius-round);
+
+    &::before {
+        font: var(--fa-font-solid);
+        content: '\f104';
+    }
+
+    &:hover {
+        background-color: var(--theme-color);
+        color: var(--surface-1);
+    }
+}
+
+@include mixin.mobile {
+    .sidebar-toggle {
+        &:hover {
+            background-color: var(--surface-2);
+            color: var(--text-1);
+        }
+
+        &:active {
+            background-color: var(--theme-color);
+            color: var(--surface-1);
+        }
+    }
+}
+
+.sidebar {
+    // 漸層效果
+    .sidebar-nav::after {
+        content: '';
+        block-size: var(--size-9);
+        position: absolute;
+        inset: {
+            block-end: 0;
+            inline-start: 0;
+            inline-end: 10px;
+        }
+    }
+
+    .sidebar-toggle {
+        position: absolute;
+        inset-inline-start: calc(100% - var(--size-5));
+    }
+}
+
+@include mixin.desktop {
+    body.close {
+        .sidebar {
+            transform: translateX(-100%);
+
+            .sidebar-toggle {
+                transform: translateX(var(--size-5)) scaleX(-1);
+            }
+        }
+
+        .nav-middle,
+        .content,
+        .app-nav,
+        .results-panel {
+            margin-inline-start: 0;
+        }
+    }
+
+    [dir='rtl'] body {
+        &.close .sidebar {
+            transform: translateX(100%);
+
+            .sidebar-toggle {
+                transform: translateX(calc(-1 * var(--size-5)));
+            }
+        }
+
+        .sidebar-toggle {
+            transform: scaleX(-1);
+        }
+    }
+
+    .sidebar .sidebar-toggle {
+        inset-block-end: var(--size-3);
+    }
+
+    .sidebar:has(.sidebar-nav:hover) {
+        inline-size: 35%;
+    }
+}
+
+@include mixin.mobile {
+    /*
+     * 在 mobile 的設備下
+     * docsify 在 body.close 時，body.onclick 會 remove '.close'
+     * 導致關閉 sidebar 的情形下，點畫面就會開啟 sidebar；
+     * 合理的情形應該是要開啟 sidebar 的情況下，點畫面順勢關閉 sidebar 才對
+     * 而用 JS event.stopImmediatePropagation() 也會導致 body 中其他 click 事件跟著停止運作
+     * 所以只好「反著使用」，讓 body.close 為展開 sidebar 的狀態
+     */
+
+    // 關閉 sidebar
+    body {
+        .sidebar {
+            transform: translateX(-100%);
+
+            [dir='rtl'] & {
+                transform: translateX(100%);
+            }
+        }
+
+        .sidebar-toggle {
+            transform: translateX(var(--size-5)) scaleX(-1);
+
+            [dir='rtl'] & {
+                transform: translateX(calc(-1 * var(--size-5))) scaleX(1);
+            }
+        }
+    }
+
+    // 展開 sidebar
+    body.close {
+        .sidebar {
+            transform: translateX(0);
+        }
+
+        .content {
+            filter: blur(var(--size-5));
+        }
+
+        .sidebar-toggle {
+            transform: none;
+
+            [dir='rtl'] & {
+                transform: scaleX(-1);
+            }
+        }
+    }
+
+    .sidebar .sidebar-toggle {
+        inset-block-end: calc(3 * var(--size-3) + 2 * var(--size-7));
+    }
+}

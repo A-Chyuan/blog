@@ -1,0 +1,86 @@
+@use '../abstracts/mixins' as mixin;
+
+.markdown-section {
+    .alert-example,
+    .alert-note,
+    .alert-tip,
+    .alert-warning,
+    .alert-attention {
+        display: block;
+        position: relative;
+        word-wrap: break-word;
+        word-break: break-word;
+        margin-block-end: var(--size-5);
+        padding: var(--size-3);
+        border: {
+            width: var(--border-size-1);
+            inline-start-width: var(--size-1);
+            style: solid;
+            color: var(--surface-2);
+            radius: var(--size-2);
+        }
+
+        &::before {
+            display: block;
+            font-weight: var(--font-weight-6);
+            font-size: var(--font-size-3);
+            line-height: var(--font-lineheight-4);
+            margin-block-end: var(--size-5);
+        }
+    }
+
+    .alert-example {
+        $light: var(--stone-6);
+        $dark: var(--stone-4);
+        @include mixin.theme-property(border-color, $light, $dark);
+
+        &::before {
+            content: '✎ Example';
+            color: var(--text-1);
+        }
+    }
+
+    .alert-note {
+        $light: var(--cyan-6);
+        $dark: var(--cyan-3);
+        @include mixin.theme-property(border-color, $light, $dark);
+
+        &::before {
+            content: '🗒 Note';
+            @include mixin.theme-property(color, $light, $dark);
+        }
+    }
+
+    .alert-tip {
+        $light: var(--lime-6);
+        $dark: var(--lime-4);
+        @include mixin.theme-property(border-color, $light, $dark);
+
+        &::before {
+            content: '◉ Tip';
+            @include mixin.theme-property(color, $light, $dark);
+        }
+    }
+
+    .alert-attention {
+        $light: var(--yellow-6);
+        $dark: var(--yellow-3);
+        @include mixin.theme-property(border-color, $light, $dark);
+
+        &::before {
+            content: '🖈 Attention';
+            @include mixin.theme-property(color, $light, $dark);
+        }
+    }
+
+    .alert-warning {
+        $light: var(--red-6);
+        $dark: var(--red-4);
+        @include mixin.theme-property(border-color, $light, $dark);
+
+        &::before {
+            content: '⚠ Warning';
+            @include mixin.theme-property(color, $light, $dark);
+        }
+    }
+}

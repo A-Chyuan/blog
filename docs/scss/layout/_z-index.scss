@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as variable;
+
+body {
+    .nav-wrapper {
+        z-index: index(variable.$z-indexes, 'nav-wrapper');
+
+        .nav-middle {
+            .app-nav-wrapper {
+                &,
+                .app-nav {
+                    z-index: index(variable.$z-indexes, 'app-nav');
+                }
+
+                .app-nav-menu-icon {
+                    z-index: index(variable.$z-indexes, 'app-nav-menu-icon');
+                }
+            }
+        }
+    }
+
+    main {
+        .sidebar {
+            z-index: index(variable.$z-indexes, 'sidebar');
+        }
+
+        .content .markdown-section {
+            pre {
+                button {
+                    z-index: index(variable.$z-indexes, 'copy-code-button');
+                }
+            }
+        }
+    }
+
+    footer .progress {
+        z-index: index(variable.$z-indexes, 'progress');
+    }
+
+    .medium-zoom-overlay {
+        z-index: index(variable.$z-indexes, 'medium-zoom-overlay');
+    }
+
+    .medium-zoom-image--opened {
+        z-index: index(variable.$z-indexes, 'medium-zoom-image--opened');
+    }
+}

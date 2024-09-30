@@ -1,0 +1,410 @@
+.moon-cat-wrapper .tail,
+.moon-cat-wrapper .tail-mask,
+.moon-cat-wrapper .tail-end {
+  transition: 0s, transform 0.5s var(--ease-in-out-5);
+}
+.moon-cat-wrapper .cat {
+  transition: 0s, inset 0.5s var(--ease-in-out-5);
+}
+
+.moon-cat-wrapper {
+  position: relative;
+  inline-size: 100%;
+  block-size: 400px;
+  background: var(--surface-1);
+  border-radius: var(--radius-3);
+}
+.moon-cat-wrapper:hover .cat {
+  inset-block-end: 250px;
+}
+.moon-cat-wrapper:hover .tail,
+.moon-cat-wrapper:hover .tail-mask,
+.moon-cat-wrapper:hover .tail-end {
+  transform: translateY(-5px);
+}
+.moon-cat-wrapper div {
+  display: block;
+  margin: auto;
+  position: absolute;
+  inset: 0;
+}
+@keyframes clouds-loop-1 {
+  to {
+    background-position: -1000px 0;
+  }
+}
+.moon-cat-wrapper .clouds-1 {
+  background-image: url("https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/clouds_2.png");
+  animation: clouds-loop-1 80s infinite linear;
+}
+@keyframes clouds-loop-2 {
+  to {
+    background-position: -1000px 0;
+  }
+}
+.moon-cat-wrapper .clouds-2 {
+  background-image: url("https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/clouds_1.png");
+  animation: clouds-loop-2 60s infinite linear;
+}
+@keyframes clouds-loop-3 {
+  to {
+    background-position: -1579px 0;
+  }
+}
+.moon-cat-wrapper .clouds-3 {
+  background-image: url("https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/clouds_3.png");
+  animation: clouds-loop-3 68s infinite linear;
+}
+.moon-cat-wrapper .clouds {
+  opacity: 0.25;
+  pointer-events: none;
+}
+.moon-cat-wrapper .clouds-1,
+.moon-cat-wrapper .clouds-2,
+.moon-cat-wrapper .clouds-3 {
+  block-size: 400px;
+  background-repeat: repeat-x;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  inset-inline-start: 0;
+}
+.moon-cat-wrapper .moon {
+  block-size: 120px;
+  inline-size: 120px;
+  border-radius: var(--radius-round);
+  background-color: var(--stone-8);
+  box-shadow: 0 0 60px 1px var(--stone-10);
+  z-index: 0;
+}
+.moon-cat-wrapper .moon::before {
+  content: "";
+  border-radius: var(--radius-round);
+  background: var(--stone-10);
+  box-shadow: 10px -50px 0 0 var(--stone-10), 50px 0 0 0 var(--stone-10), 50px -37px 0 10px var(--stone-10);
+  position: absolute;
+  inline-size: 20px;
+  block-size: 20px;
+  inset-inline-start: 30px;
+  inset-block-end: 10px;
+}
+.moon-cat-wrapper .tail {
+  block-size: 50px;
+  inline-size: 60px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: #e9cba7;
+  border-radius: 25px;
+  display: inline-block;
+  z-index: 0;
+  inset-block-end: 110px;
+  inset-inline-start: 60px;
+}
+.moon-cat-wrapper .tail-mask {
+  block-size: 30px;
+  inline-size: 70px;
+  background-color: var(--surface-1);
+  z-index: 0;
+  inset-inline-start: 60px;
+  inset-block-end: 150px;
+}
+.moon-cat-wrapper .tail-end {
+  block-size: 16px;
+  inline-size: 16px;
+  border-radius: var(--radius-round);
+  background-color: #e9cba7;
+  z-index: 0;
+  inset-inline-start: 103px;
+  inset-block-end: 115px;
+}
+.moon-cat-wrapper .cat {
+  background: #e9cba7;
+  block-size: 60px;
+  inline-size: 60px;
+  z-index: 0;
+  inset-block-start: auto;
+  inset-block-end: 200px;
+}
+.moon-cat-wrapper .cat::before, .moon-cat-wrapper .cat::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 50px;
+  block-size: 22px;
+  inline-size: 25px;
+  background-color: #e9cba7;
+  z-index: 1;
+}
+.moon-cat-wrapper .cat::before {
+  -webkit-clip-path: polygon(0 0, 0% 100%, 100% 60%);
+          clip-path: polygon(0 0, 0% 100%, 100% 60%);
+  inset-inline-start: 0;
+}
+.moon-cat-wrapper .cat::after {
+  -webkit-clip-path: polygon(100% 0, 0% 60%, 100% 100%);
+          clip-path: polygon(100% 0, 0% 60%, 100% 100%);
+  inset-inline-end: 0;
+}
+.moon-cat-wrapper .cat .ear-inner {
+  inset-block-end: 60px;
+  background-color: #d3b897;
+  block-size: 15px;
+  inline-size: 25px;
+  z-index: 3;
+}
+.moon-cat-wrapper .cat .ear-inner-left {
+  -webkit-clip-path: polygon(0 0, 100% 90%, 0 100%);
+          clip-path: polygon(0 0, 100% 90%, 0 100%);
+  inset-inline-end: 30px;
+}
+.moon-cat-wrapper .cat .ear-inner-right {
+  -webkit-clip-path: polygon(100% 0%, 100% 100%, 0 90%);
+          clip-path: polygon(100% 0%, 100% 100%, 0 90%);
+  inset-inline-start: 30px;
+}
+.moon-cat-wrapper .cat .mask {
+  position: relative;
+  inset-block-start: 0;
+  background-color: #e9cba7;
+  border-radius: 50%;
+  block-size: 25px;
+  inline-size: 60px;
+  z-index: 4;
+}
+.moon-cat-wrapper .cat .patch {
+  z-index: 5;
+  inset-block-start: 0;
+}
+.moon-cat-wrapper .cat .patch .fur {
+  inline-size: 4px;
+  background-color: #c0a98b;
+}
+.moon-cat-wrapper .cat .patch .fur:first-of-type {
+  inset-block-end: 44px;
+  inset-inline-end: 12px;
+  block-size: 15px;
+}
+.moon-cat-wrapper .cat .patch .fur:nth-of-type(2) {
+  inset-block-end: 52px;
+  inset-inline-start: 0;
+  block-size: 7px;
+}
+.moon-cat-wrapper .cat .patch .fur:nth-of-type(3) {
+  inset-block-end: 50px;
+  inset-inline-start: 12px;
+  block-size: 10px;
+}
+.moon-cat-wrapper .cat .eyes {
+  position: absolute;
+  inset-block-start: 20px;
+  block-size: 9px;
+  inline-size: 9px;
+  background-color: #333;
+  border-radius: 100%;
+  z-index: 5;
+}
+.moon-cat-wrapper .cat .eyes.left {
+  inset-inline-start: 15px;
+}
+.moon-cat-wrapper .cat .eyes.right {
+  inset-inline-end: 15px;
+}
+.moon-cat-wrapper .cat .eyes::after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  block-size: 4px;
+  inline-size: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: 6;
+}
+.moon-cat-wrapper .cat .whisk-left,
+.moon-cat-wrapper .cat .whisk-right {
+  display: inline-block;
+  position: relative;
+}
+.moon-cat-wrapper .cat .whisk-left {
+  inset-inline-start: -5px;
+}
+.moon-cat-wrapper .cat .whisk-right {
+  inset-inline-start: 50px;
+}
+.moon-cat-wrapper .cat .whisker {
+  block-size: 1.5px;
+  inline-size: 12px;
+  background-color: #d3b897;
+  margin-block-end: 14px;
+}
+.moon-cat-wrapper .cat .whisk-one {
+  transform: rotate(10deg);
+  margin-block-end: 18px;
+}
+.moon-cat-wrapper .cat .whisk-three {
+  transform: rotate(-10deg);
+  margin-block-end: 10px;
+}
+.moon-cat-wrapper .cat .whisk-four {
+  transform: rotate(-10deg);
+  margin-block-end: 18px;
+}
+.moon-cat-wrapper .cat .whisk-six {
+  transform: rotate(10deg);
+  margin-block-end: 10px;
+}
+.moon-cat-wrapper .cat .nose {
+  block-size: 8.5px;
+  inline-size: 9px;
+  background-color: #554d44;
+  -webkit-clip-path: ellipse(40% 22% at 50% 50%);
+          clip-path: ellipse(40% 22% at 50% 50%);
+  z-index: 6;
+}
+.moon-cat-wrapper .cat .smile {
+  z-index: 5;
+  inset-block-end: 1px;
+}
+.moon-cat-wrapper .cat .smile-left-align {
+  display: inline-block;
+}
+.moon-cat-wrapper .cat .smile-left {
+  block-size: 5px;
+  inline-size: 10px;
+  background-color: #e9cba7;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #554d44;
+  border-radius: 0 0 10px 10px;
+  inset-inline-end: 10px;
+  inset-block-start: 5px;
+}
+.moon-cat-wrapper .cat .mask-left {
+  block-size: 2px;
+  inline-size: 10px;
+  background-color: #e9cba7;
+  inset-block-start: 2px;
+  inset-inline-end: 10px;
+}
+.moon-cat-wrapper .cat .smile-right-align {
+  display: inline-block;
+}
+.moon-cat-wrapper .cat .smile-right {
+  block-size: 5px;
+  inline-size: 10px;
+  background-color: #e9cba7;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #554d44;
+  border-radius: 0 0 10px 10px;
+  inset-inline-start: 10px;
+  inset-block-start: 5px;
+}
+.moon-cat-wrapper .cat .mask-right {
+  block-size: 2px;
+  inline-size: 10px;
+  background-color: #e9cba7;
+  inset-block-start: 2px;
+  inset-inline-start: 10px;
+}
+.moon-cat-wrapper .cat .tummy {
+  inset-block-start: 35px;
+  block-size: 15px;
+  inline-size: 30px;
+  border-radius: 25px 25px 0 0;
+  background-color: #f4e7d1;
+}
+
+.moon-cat-wrapper .signature {
+  font-family: Tangerine;
+  inset-block-end: 0;
+  inset-block-start: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 10%;
+  margin-block: var(--font-size-00);
+}
+.moon-cat-wrapper .signature::before {
+  content: "Idea from Angela Velasquez, Maeve, and Vavik";
+  display: block;
+  color: var(--text-1);
+  font-size: 1.5em;
+  text-align: center;
+  text-indent: 0;
+}
+.moon-cat-wrapper .signature i {
+  color: #ac1d3f;
+}
+
+#article-info,
+#dictionary-box {
+  display: none;
+}
+
+.collapsible::before,
+.collapsible a::before {
+  display: none;
+}
+
+.docsify-pagination-container {
+  opacity: 0;
+}
+
+main .toc-wrapper {
+  inset-block-end: 0;
+}
+
+.toc {
+  display: none;
+}
+
+.bg-cat-1 {
+  background-image: url(https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/cat_1.jpeg);
+  block-size: 30vh;
+}
+
+.bg-cat-1:nth-of-type(4) {
+  block-size: 50vh;
+}
+
+.bg-cat-2 {
+  background-image: url(https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/cat_2.jpg);
+  block-size: 40vh;
+}
+
+.bg-cat-1,
+.bg-cat-2,
+.toc-wrapper {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.toc-wrapper {
+  background-image: url(https://raw.githubusercontent.com/A-Chyuan/blog/main/docs/scss/img/cat_1.jpeg);
+}
+.toc-wrapper::after {
+  opacity: 0;
+  transition: 0s, opacity 0.5s var(--ease-5);
+  content: "Mikhail Vasilyev";
+  position: fixed;
+  inset-block-end: 0;
+  display: inline-block;
+  inline-size: -webkit-fill-available;
+  inline-size: -moz-available;
+  inline-size: fill-available;
+  color: var(--stone-0);
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-6);
+  text-align: center;
+  text-shadow: var(--stone-11) 0.1rem 0.1rem 0.2rem;
+}
+.toc-wrapper:hover::after {
+  opacity: 1;
+}
+
+.bg-cat-1,
+.bg-cat-2,
+.moon-cat-wrapper {
+  border-radius: var(--radius-3);
+}/*# sourceMappingURL=homepage.css.map */

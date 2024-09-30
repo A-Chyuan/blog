@@ -1,0 +1,52 @@
+.markdown-section {
+    :where(h1, h2, h3, h4, h5, h6) {
+        &::before {
+            margin-inline-end: var(--font-size-1);
+        }
+    }
+
+    h1 {
+        counter-reset: first;
+    }
+
+    h2 {
+        counter-reset: second;
+
+        &::before {
+            counter-increment: first;
+            content: '§' counter(first);
+        }
+    }
+
+    h3 {
+        counter-reset: third;
+
+        &::before {
+            counter-increment: second;
+            content: '§' counter(first) '.' counter(second);
+        }
+    }
+
+    h4 {
+        counter-reset: fourth;
+
+        &::before {
+            counter-increment: third;
+            content: '§' counter(first) '.' counter(second) '.' counter(third);
+        }
+    }
+
+    h5 {
+        counter-reset: fifth;
+
+        &::before {
+            counter-increment: fourth;
+            content: '§' counter(first) '.' counter(second) '.' counter(third) '.' counter(fourth);
+        }
+    }
+
+    h6::before {
+        counter-increment: fifth;
+        content: '§' counter(first) '.' counter(second) '.' counter(third) '.' counter(fourth) '.' counter(fifth);
+    }
+}
