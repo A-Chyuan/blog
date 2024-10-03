@@ -1,0 +1,2 @@
+- [Behind the Blog](/notes/about/README)
+- [Article Helper](/notes/about/article-helper)
