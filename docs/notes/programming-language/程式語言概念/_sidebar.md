@@ -1,0 +1,19 @@
+- [程式語言概念](/notes/programming-language/程式語言概念/README)
+- Preliminaries
+    - [Reasons for Studying Concepts of Programming Languages](/notes/programming-language/程式語言概念/ch01/1-1)
+    - [Programming Domains](/notes/programming-language/程式語言概念/ch01/1-2)
+    - [Language Evaluation Criteria](/notes/programming-language/程式語言概念/ch01/1-3)
+    - [Influences on Language Design](/notes/programming-language/程式語言概念/ch01/1-4)
+    - [Language Categories](/notes/programming-language/程式語言概念/ch01/1-5)
+    - [Language Design Trade-Offs](/notes/programming-language/程式語言概念/ch01/1-6)
+    - [Implementation Methods](/notes/programming-language/程式語言概念/ch01/1-7)
+    - [Programming Environments](/notes/programming-language/程式語言概念/ch01/1-8)
+- [Evolution of the Major Programming Languages](/ ':chapter-skipped')
+- Describing Syntax and Semantics
+    - [Introduction](/notes/programming-language/程式語言概念/ch03/3-1)
+    - [The General Problem of Describing Syntax](/notes/programming-language/程式語言概念/ch03/3-2)
+    - [Formal Methods of Describing Syntax](/notes/programming-language/程式語言概念/ch03/3-3)
+    - [Attribute Grammars](/notes/programming-language/程式語言概念/ch03/3-4)
+    - [Describing the Meanings of Programs: Dynamic Semantics](/notes/programming-language/程式語言概念/ch03/3-5)
+- Lexical and Syntax Analysis
+    - [編譯器](/notes/computer-science/編譯器/README)
