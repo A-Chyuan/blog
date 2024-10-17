@@ -18,6 +18,18 @@
     const style = document.createElement('style');
 
     style.innerHTML = `
+        * {
+            display: none;    
+        }
+
+        html,
+        body,
+        a,
+        object,
+        object * {
+            display: unset; 
+        }
+
         body {
             margin: 0;
             display: flex;
