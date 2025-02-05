@@ -1,0 +1,25 @@
+- [演算法](/notes/computer-science/演算法/course-materials/course-materials)
+- The Role of Algorithms in Computing
+    - [Algorithms](/notes/computer-science/演算法/ch01/1-1)
+    - [Algorithms as a technology](/notes/computer-science/演算法/ch01/1-2)
+- Getting Started
+    - [Insertion Sort](/notes/computer-science/演算法/ch02/2-1)
+    - [Analyzing Algorithms](/notes/computer-science/演算法/ch02/2-2)
+    - [Designing Algorithms](/notes/computer-science/演算法/ch02/2-3)
+- Characterizing Running Times
+    - [O-Notation, &Omega;-Notation, and &Theta;-Notation](/notes/computer-science/演算法/ch03/3-1)
+    - [Asymptotic Notation: Formal Definitions](/notes/computer-science/演算法/ch03/3-2)
+    - [Standard Notations and Common Functions](/notes/computer-science/演算法/ch03/3-3 ':disabled')
+- Divide-and-Conquer
+    - [Multiplying Square Matrices](/notes/computer-science/演算法/ch04/4-1)
+    - [Strassen’s Algorithm for Matrix Multiplication](/notes/computer-science/演算法/ch04/4-2)
+    - [The Substitution Method for Solving Recurrences](/notes/computer-science/演算法/ch04/4-3)
+    - [The Recursion-Tree Method for Solving Recurrences](/notes/computer-science/演算法/ch04/4-4)
+    - [The Master Method for Solving Recurrences](/notes/computer-science/演算法/ch04/4-5)
+    - [Proof of the Continuous Master Theorem](/notes/computer-science/演算法/ch04/4-6)
+    - [Akra-Bazzi Recurrences](/notes/computer-science/演算法/ch04/4-7)
+- Probabilistic Analysis and Randomized Algorithms
+    - [The Hiring Problem](/notes/computer-science/演算法/ch05/5-1)
+    - [Indicator Random Variables](/notes/computer-science/演算法/ch05/5-2)
+    - [Randomized Algorithms](/notes/computer-science/演算法/ch05/5-3)
+    - [Probabilistic Analysis and Further Uses of Indicator Random Variables](/notes/computer-science/演算法/ch05/5-4)
