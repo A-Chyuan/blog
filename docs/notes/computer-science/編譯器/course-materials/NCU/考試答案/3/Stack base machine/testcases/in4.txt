@@ -1,0 +1,9 @@
+load 1
+load 1
+inc
+dec
+dec
+dec
+dec
+add
+sub
