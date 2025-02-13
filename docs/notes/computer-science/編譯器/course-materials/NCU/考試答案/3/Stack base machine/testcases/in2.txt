@@ -1,0 +1,14 @@
+load 3
+inc
+inc
+load 5
+mod
+inc
+inc
+load 10
+sub
+dec
+dec
+load 2
+mul
+dec

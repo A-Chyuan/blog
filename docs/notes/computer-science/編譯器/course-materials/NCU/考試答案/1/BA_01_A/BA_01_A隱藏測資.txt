@@ -1,0 +1,20 @@
+ÁôÂÃ´ú¸ê
+
+Sample Input 1 
+Fai!ure;
+Sample Output 1 
+invalid input
+
+
+Sample Input 2 
+"string;
+Sample Output 2 
+invalid input
+
+
+Sample Input 3 
+just_an_ID_0; 
+
+Sample Output 3 
+ID just_an_ID_0 
+SEMICOLON ;

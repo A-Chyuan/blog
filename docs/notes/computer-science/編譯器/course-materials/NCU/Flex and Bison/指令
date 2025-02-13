@@ -1,0 +1,13 @@
+MinGW
+	安裝
+		mingw32-base bin
+		msys-bison bin
+		msys-flex bin
+
+	環境變數 系統變數 Path
+		C:\MinGW\bin
+		C:\MinGW\msys\1.0\bin
+
+編譯
+	flex myLex.l
+	gcc lex.yy.c -L"C:\MinGW\msys\1.0\lib" -lfl		(link it with the flex library, -lfl)
