@@ -1,0 +1,7 @@
+load 1
+load 3
+add
+load 2
+load 3
+mul
+sub
